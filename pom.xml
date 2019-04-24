@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-
     <groupId>newmaven</groupId>
     <artifactId>mavenproject</artifactId>
     <version>newmaven1.0</version>
@@ -29,9 +28,20 @@
             <version>1.0.0-m01</version>
         </dependency>
     </dependencies>
+	<!--
+	<distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>Admin-PC-releases</name>
+        <url>http://localhost:8081/artifactory/libs-release-local</url>
+    </repository>
+</distributionManagement>
     <build>
+	-->
         <plugins>
             <plugin>
+			
+			
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.3</version>
@@ -39,6 +49,26 @@
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>
+			<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.5.1</version>
+    <configuration>
+     <source>1.8</source>
+     <target>1.8</target>
+     <encoding>UTF-8</encoding>
+    </configuration>
+   </plugin>
+   <plugin>
+    <groupId>org.apache.tomcat.maven</groupId>
+    <artifactId>tomcat7-maven-plugin</artifactId>
+    <version>2.2</version>
+    <configuration>
+     <url>http://localhost:8082/manager/text</url>
+     <username>tomcat</username>
+     <password>tomcat</password>
+    </configuration>
+   </plugin>
+  </plugins>
+            </build>
 </project>
